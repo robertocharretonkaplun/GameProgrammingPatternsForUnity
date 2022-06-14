@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7777798421181849900
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2894411767783406127, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 891cab73acc07624aad60e3465f471cb, type: 2}
+    - target: {fileID: 5189905499354224648, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cdb034b1e84d2f64da1ed6ed3972c7c5, type: 2}
+    - target: {fileID: 9043140263864497678, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+      propertyPath: m_Name
+      value: ThirdPersonCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043140263864497679, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043140263864497679, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043140263864497679, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043140263864497679, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043140263864497679, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043140263864497679, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043140263864497679, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043140263864497679, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043140263864497679, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043140263864497679, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043140263864497679, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9043140263758302736, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+    - {fileID: 9043140263758302734, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+--- !u!95 &1625793267280637758 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9043140263758302738, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+  m_PrefabInstance: {fileID: 7777798421181849900}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1895614728890373033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8196228039351284357, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}
+  m_PrefabInstance: {fileID: 7777798421181849900}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &960097786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895614728890373033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ccddcb263052b45b14c6475f4ef67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraFollow: {fileID: 0}
+  animator: {fileID: 1625793267280637758}
+  PlayerSpeed: 2
+  RotationSpeed: 10
+  JumpHeight: 1
+  _gravityValue: -9.81
+  _groundedPlayer: 0
+  IsCrouch: 0

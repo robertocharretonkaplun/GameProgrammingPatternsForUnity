@@ -25,11 +25,75 @@ public class ThirdPersonCameraRotator : MonoBehaviour
   [SerializeField]
   private Vector2 _rotationXMinMax = new Vector2(-40, 40);
 
+  [Header("Cam properties")]
+  public bool isCamLock = true;
+  [Header("Move speed Attributes")]
+  public float UpMovement = 2.5f;
+  public float DownMovement = -2.5f;
+  [Header("Rotation Attributes")]
+  private float rotX = 0f;
+  private float rotY = 0f;
+  public float sensibility = 2.5f;
+
   private void Start()
   {
     Cursor.lockState = CursorLockMode.Locked;
   }
   void Update()
+  {
+    // Enable the camera movement
+    if (Input.GetKeyDown(KeyCode.C))
+    {
+      if (isCamLock)
+      {
+        isCamLock = false;
+      }
+      else
+      {
+        isCamLock = true;
+      }
+    }
+
+    if (isCamLock)
+    {
+      CameraRotation();
+    }
+    else
+    {
+      CameraMovement();
+    }
+  }
+
+  void CameraRotationWithMouse()
+  {
+    // Apply a rotation when right click is press
+    if (Input.GetKey(KeyCode.Mouse1))
+    {
+      rotY += Input.GetAxis("Mouse X") * sensibility;
+      rotX += Input.GetAxis("Mouse Y") * -1 * sensibility;
+      transform.localEulerAngles = new Vector3(rotX, rotY, 0);
+    }
+  }
+
+  void CameraMovement()
+  {
+    // Move the camera
+    if (!isCamLock)
+    {
+      // Mouse Cam Rotation
+      CameraRotationWithMouse();
+
+      // Keyboard cam movement
+
+
+      transform.Translate(0, 0, Input.mouseScrollDelta.y * 50 * Time.deltaTime);
+
+
+
+    }
+  }
+
+  void CameraRotation()
   {
     float mouseX = Input.GetAxis("Mouse X") * _mouseSensitivity;
     float mouseY = Input.GetAxis("Mouse Y") * _mouseSensitivity;
