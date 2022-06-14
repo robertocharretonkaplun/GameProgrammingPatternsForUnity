@@ -81,8 +81,8 @@ public class CustomWander : MonoBehaviour
     else
     {
       // Change point index
-      PointIndex = Random.Range(0, waypoints.Waypoints.Length-1);
-      //PointIndex++;// Random.Range(0, waypoints.Waypoints.Length-1);
+      //PointIndex = Random.Range(0, waypoints.Waypoints.Length-1);
+      PointIndex++;// Random.Range(0, waypoints.Waypoints.Length-1);
       target = waypoints.Waypoints[PointIndex];
     }
   }
