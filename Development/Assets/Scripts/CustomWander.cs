@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 
 public class CustomWander : MonoBehaviour
@@ -12,6 +13,7 @@ public class CustomWander : MonoBehaviour
 
   public float viewDistance = 8f;
   public float playerViewDistance = 8f;
+  public float KillDistance = 1f;
 
 
   public Animator animator;
@@ -40,6 +42,10 @@ public class CustomWander : MonoBehaviour
       animator.SetBool("IsWalking", true);
       IsSeeking = true;
       agent.SetDestination(player.position);
+      if (distance <= KillDistance)
+      {
+        SceneManager.LoadScene("MiniBackrooms");
+      }
     }
     else
     {
@@ -103,6 +109,8 @@ public class CustomWander : MonoBehaviour
     Gizmos.DrawWireSphere(transform.position, viewDistance);
     Gizmos.color = Color.cyan;
     Gizmos.DrawWireSphere(transform.position, playerViewDistance);
+    Gizmos.color = Color.yellow;
+    Gizmos.DrawWireSphere(transform.position, KillDistance);
   }
 
   public void Check()
