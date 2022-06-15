@@ -7,7 +7,7 @@ public class LeverActivation : MonoBehaviour
   public Transform target;
   public GameObject Light;
   public float viewDistance = .5f;
-
+  public bool IsLeverActivated;
   private void Start()
   {
     target = FindObjectOfType<ThirdPersonControllerV2>().transform;
@@ -17,18 +17,20 @@ public class LeverActivation : MonoBehaviour
   {
     float distance = Vector3.Distance(target.position, transform.position);
 
-    if (distance <= viewDistance)
+    if (distance <= viewDistance && !IsLeverActivated)
     {
       if (Input.GetKey(KeyCode.E))
       {
         Light.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+        GameManager.instance.levers++;
+        IsLeverActivated = true;
       }
     }
   }
 
   private void OnDrawGizmosSelected()
   {
-    Gizmos.color = Color.cyan;
+    Gizmos.color = Color.yellow;
     Gizmos.DrawWireSphere(transform.position, viewDistance);
   }
 }

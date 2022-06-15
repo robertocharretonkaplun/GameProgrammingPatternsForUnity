@@ -36,9 +36,9 @@ public class CustomFlee : MonoBehaviour
 
   private void OnDrawGizmosSelected()
   {
-    Gizmos.color = Color.green;
+    Gizmos.color = Color.magenta;
     Gizmos.DrawLine(transform.position, Enemy.position);
-    Gizmos.color = Color.cyan;
+    Gizmos.color = Color.magenta;
     Gizmos.DrawWireSphere(transform.position, viewDistance);
   }
 }
