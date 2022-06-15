@@ -11,6 +11,7 @@ public class RoofCheck : MonoBehaviour
 
   public float timer = 2.5f;
   public float timeOfInspection = 6.5f;
+  Color rayColor = Color.red;
   // Start is called before the first frame update
   void Start()
   {
@@ -37,11 +38,12 @@ public class RoofCheck : MonoBehaviour
     Vector3 origin = transform.position;
     //Vector3 direction = Vector3.up;
 
-    Debug.DrawRay(origin, Vector3.up * viewDistance);
+    Debug.DrawRay(origin, Vector3.up * viewDistance, rayColor);
     if (Physics.Raycast(origin, Vector3.up, out hit, viewDistance))
     {
-      if (player.IsCrouch)
+      if (player.IsAnalizing)
       {
+        rayColor = Color.green;
         if (timer <= 0.0f)
         {
           // Generate the next wave
@@ -54,6 +56,10 @@ public class RoofCheck : MonoBehaviour
           timer = timeOfInspection;
         }
         timer -= Time.deltaTime;
+      }
+      else
+      {
+        rayColor = Color.red;
       }
     }
 

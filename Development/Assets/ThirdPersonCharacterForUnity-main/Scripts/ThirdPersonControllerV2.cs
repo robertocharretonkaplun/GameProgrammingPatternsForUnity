@@ -26,6 +26,7 @@ public class ThirdPersonControllerV2 : MonoBehaviour
 
   public bool _groundedPlayer;
   public bool IsCrouch = false;
+  public bool IsAnalizing = false;
   private void Start()
   {
     controller = GetComponent<CharacterController>();
@@ -33,8 +34,21 @@ public class ThirdPersonControllerV2 : MonoBehaviour
 
   private void Update()
   {
-    Movement();
+    if (!IsAnalizing)
+    {
+      Movement();
+    }
     Crouch();
+    if (Input.GetKey(KeyCode.Q))
+    {
+      IsAnalizing = true;
+      animator.SetBool("IsLooking", IsAnalizing);
+    }
+    else
+    {
+      IsAnalizing = false;
+      animator.SetBool("IsLooking", IsAnalizing);
+    }
   }
 
   public void Crouch()
