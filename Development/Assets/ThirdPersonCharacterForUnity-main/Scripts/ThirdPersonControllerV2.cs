@@ -30,6 +30,7 @@ public class ThirdPersonControllerV2 : MonoBehaviour
   private void Start()
   {
     controller = GetComponent<CharacterController>();
+    CameraFollow = Camera.main;
   }
 
   private void Update()

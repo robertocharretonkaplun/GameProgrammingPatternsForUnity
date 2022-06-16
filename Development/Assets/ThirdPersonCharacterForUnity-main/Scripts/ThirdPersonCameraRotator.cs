@@ -37,6 +37,7 @@ public class ThirdPersonCameraRotator : MonoBehaviour
 
   private void Start()
   {
+    _target = FindObjectOfType<ThirdPersonControllerV2>().transform.GetChild(3).transform;
     Cursor.lockState = CursorLockMode.Locked;
   }
   void Update()
@@ -57,6 +58,10 @@ public class ThirdPersonCameraRotator : MonoBehaviour
     if (isCamLock)
     {
       CameraRotation();
+      //if (Input.mouseScrollDelta.y > 0)
+      //{
+      //}
+        _distanceFromTarget += Input.mouseScrollDelta.y * 50 * Time.deltaTime;
     }
     else
     {

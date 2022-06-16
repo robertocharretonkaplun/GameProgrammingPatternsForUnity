@@ -50,7 +50,8 @@ public class RoofCheck : MonoBehaviour
           //StartCoroutine(WavePhaseState());
           if (hit.transform.tag == "Roof")
           {
-            Destroy(hit.transform.gameObject);
+            hit.transform.gameObject.SetActive(false);
+            //Destroy(hit.transform.gameObject);
           }
           // 
           timer = timeOfInspection;

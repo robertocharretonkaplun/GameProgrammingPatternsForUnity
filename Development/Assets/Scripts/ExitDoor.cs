@@ -7,6 +7,7 @@ public class ExitDoor : MonoBehaviour
   public Transform target;
   public GameObject DoorLight;
   public float viewDistance = 1.5f;
+  public bool IsDoorEnable;
   // Start is called before the first frame update
   void Start()
   {
@@ -18,8 +19,7 @@ public class ExitDoor : MonoBehaviour
   {
     if (GameManager.instance.levers == GameManager.instance.leversMax)
     {
-      DoorLight.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
-
+      IsDoorEnable = true;
       float distance = Vector3.Distance(target.position, transform.position);
 
       if (distance <= viewDistance)
@@ -29,6 +29,14 @@ public class ExitDoor : MonoBehaviour
           SceneManager.LoadScene("MiniBackrooms");
         }
       }
+    }
+    if (!IsDoorEnable)
+    {
+      DoorLight.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+    }
+    else
+    {
+      DoorLight.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
     }
   }
 
