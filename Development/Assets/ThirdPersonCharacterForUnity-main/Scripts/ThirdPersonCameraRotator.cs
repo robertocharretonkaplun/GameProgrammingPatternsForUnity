@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ThirdPersonCameraRotator : MonoBehaviour
 {
+
+  public static ThirdPersonCameraRotator instance;
   [SerializeField]
   private float _mouseSensitivity = 3.0f;
 
@@ -11,10 +13,11 @@ public class ThirdPersonCameraRotator : MonoBehaviour
   private float _rotationX;
 
   [SerializeField]
-  private Transform _target;
+  public Transform _target;
 
   [SerializeField]
-  private float _distanceFromTarget = 3.0f;
+  public float OldDistance;
+  public float _distanceFromTarget = 3.0f;
 
   private Vector3 _currentRotation;
   private Vector3 _smoothVelocity = Vector3.zero;
@@ -34,10 +37,19 @@ public class ThirdPersonCameraRotator : MonoBehaviour
   private float rotX = 0f;
   private float rotY = 0f;
   public float sensibility = 2.5f;
+  private RoofCheck roofCheck;
 
   private void Start()
   {
-    _target = FindObjectOfType<ThirdPersonControllerV2>().transform.GetChild(3).transform;
+    if (instance != null)
+    {
+      return;
+    }
+    else
+    {
+      instance = this;
+    }
+    roofCheck = FindObjectOfType<RoofCheck>();
     Cursor.lockState = CursorLockMode.Locked;
   }
   void Update()
@@ -58,10 +70,12 @@ public class ThirdPersonCameraRotator : MonoBehaviour
     if (isCamLock)
     {
       CameraRotation();
-      //if (Input.mouseScrollDelta.y > 0)
-      //{
-      //}
+      if (!roofCheck.IsRoofAtTop)
+      {
+        OldDistance = _distanceFromTarget;
+
         _distanceFromTarget += Input.mouseScrollDelta.y * 50 * Time.deltaTime;
+      }
     }
     else
     {
@@ -87,15 +101,16 @@ public class ThirdPersonCameraRotator : MonoBehaviour
     {
       // Mouse Cam Rotation
       CameraRotationWithMouse();
-
-      // Keyboard cam movement
-
-
-      transform.Translate(0, 0, Input.mouseScrollDelta.y * 50 * Time.deltaTime);
-
+      // Camera Zoom
+      Zoom();
 
 
     }
+  }
+
+  public void Zoom()
+  {
+    transform.Translate(0, 0, Input.mouseScrollDelta.y * 50 * Time.deltaTime);
   }
 
   void CameraRotation()

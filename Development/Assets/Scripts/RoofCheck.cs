@@ -12,6 +12,7 @@ public class RoofCheck : MonoBehaviour
   public float timer = 2.5f;
   public float timeOfInspection = 6.5f;
   Color rayColor = Color.red;
+  public bool IsRoofAtTop = false;
   // Start is called before the first frame update
   void Start()
   {
@@ -24,12 +25,6 @@ public class RoofCheck : MonoBehaviour
     Check();
   }
 
-  //private void OnDrawGizmosSelected()
-  //{
-  //  Gizmos.color = Color.red;
-  //  Gizmos.DrawLine(transform.position, RoofDetectionPoint.position);
-  //}
-
   public void Check()
   {
     RaycastHit hit;
@@ -37,23 +32,31 @@ public class RoofCheck : MonoBehaviour
     Vector3 toPosition = RoofDetectionPoint.position;
     Vector3 origin = transform.position;
     //Vector3 direction = Vector3.up;
-
+    var cam = ThirdPersonCameraRotator.instance;
     Debug.DrawRay(origin, Vector3.up * viewDistance, rayColor);
     if (Physics.Raycast(origin, Vector3.up, out hit, viewDistance))
     {
+      if (hit.transform.tag == "Roof")
+      {
+        IsRoofAtTop = true;
+        cam._distanceFromTarget = Mathf.Lerp(cam._distanceFromTarget, 2.0f, 5 * Time.deltaTime);
+      }
+      else
+      {
+        // If there is no roof
+        //ThirdPersonCameraRotator.instance._distanceFromTarget = ThirdPersonCameraRotator.instance.OldDistance;
+      }
+
       if (player.IsAnalizing)
       {
         rayColor = Color.green;
         if (timer <= 0.0f)
         {
-          // Generate the next wave
-          //StartCoroutine(WavePhaseState());
           if (hit.transform.tag == "Roof")
           {
             hit.transform.gameObject.SetActive(false);
-            //Destroy(hit.transform.gameObject);
+            IsRoofAtTop = false;
           }
-          // 
           timer = timeOfInspection;
         }
         timer -= Time.deltaTime;

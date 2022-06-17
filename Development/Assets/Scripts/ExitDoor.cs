@@ -17,7 +17,7 @@ public class ExitDoor : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (GameManager.instance.levers == GameManager.instance.leversMax)
+    if (Helpers.PlayerHasAllLevers())
     {
       IsDoorEnable = true;
       float distance = Vector3.Distance(target.position, transform.position);
@@ -26,7 +26,7 @@ public class ExitDoor : MonoBehaviour
       {
         if (Input.GetKeyDown(KeyCode.E))
         {
-          SceneManager.LoadScene("MiniBackrooms");
+          SceneManagment.LoadLevel_0(); // Must be Random scene
         }
       }
     }

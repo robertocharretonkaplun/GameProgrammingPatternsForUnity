@@ -18,7 +18,6 @@ public class DungeonGenerator : MonoBehaviour
     public Vector2Int maxPosition;
 
     public bool obligatory;
-
     public int ProbabilityOfSpawning(int x, int y)
     {
       // 0 - cannot spawn 1 - can spawn 2 - HAS to spawn
@@ -40,9 +39,10 @@ public class DungeonGenerator : MonoBehaviour
   public GameObject Player;
   public Transform WayPoints;
   List<Cell> board;
+  public ThirdPersonCameraRotator cam;
 
   // Start is called before the first frame update
-  void Start()
+  void Awake()
   {
     MazeGenerator();
   }
@@ -88,7 +88,8 @@ public class DungeonGenerator : MonoBehaviour
           }
           if (i == 0 && j == 0)
           {
-            Instantiate(Player, new Vector3(0, 1, 0), Quaternion.identity);
+            var player = Instantiate(Player, new Vector3(0, 1, 0), Quaternion.identity);
+            cam._target = player.transform.GetChild(0).transform.GetChild(3).transform;
           }
           var newRoom = Instantiate(rooms[randomRoom].room, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehavior>();
           newRoom.UpdateRoom(currentCell.status);
