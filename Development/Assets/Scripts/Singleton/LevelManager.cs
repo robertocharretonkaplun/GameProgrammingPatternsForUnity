@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour
 
   void Start()
   {
+    DungeonGenerator.instance.Init();
     // Init Game Manager
     GameManager.instance.Init();
   }
@@ -30,4 +31,25 @@ public class LevelManager : MonoBehaviour
   {
 
   }
+
+  public GameManager GetGameManager()
+  {
+    if (GameManager.instance != null)
+    {
+      return GameManager.instance;
+    }
+    return null;
+  }
+
+  public DungeonGenerator GetDungeonGenerator()
+  {
+    if (DungeonGenerator.instance != null)
+    {
+      return DungeonGenerator.instance;
+
+    }
+    return null;
+  }
+
+ 
 }

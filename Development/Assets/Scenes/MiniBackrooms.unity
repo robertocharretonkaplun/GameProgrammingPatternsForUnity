@@ -1332,7 +1332,7 @@ Transform:
   - {fileID: 2034445944}
   - {fileID: 58890526}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &322545164
 PrefabInstance:
@@ -3010,7 +3010,7 @@ Transform:
   m_Children:
   - {fileID: 1314445282}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &661852798
 PrefabInstance:
@@ -4879,7 +4879,7 @@ Transform:
   - {fileID: 401025639}
   - {fileID: 1371977519}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1023211019
 GameObject:
@@ -6159,6 +6159,7 @@ GameObject:
   - component: {fileID: 1314445281}
   - component: {fileID: 1314445280}
   - component: {fileID: 1314445283}
+  - component: {fileID: 1314445284}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6254,6 +6255,23 @@ MonoBehaviour:
   UpMovement: 2.5
   DownMovement: -2.5
   sensibility: 2.5
+--- !u!114 &1314445284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314445279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceff4dc64a728964b98c57cbccaf8e47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RayAmount: 1500
+  RayDistance: 300
+  stayTime: 5
+  camera: {fileID: 0}
+  Points: []
 --- !u!1001 &1338623023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6467,8 +6485,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1403081973}
-  - component: {fileID: 1403081972}
   - component: {fileID: 1403081974}
+  - component: {fileID: 1403081972}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -6488,8 +6506,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3866b810b0942fb4e9b815fdbb3342de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 1314445283}
+  ThirdPersonCharacter: {fileID: 1625793267114153762, guid: 69d62e2e0d555104fbdcc4ba3b600c73, type: 3}
   levers: 0
   leversMax: 0
+  worldDetector: {fileID: 0}
 --- !u!4 &1403081973
 Transform:
   m_ObjectHideFlags: 0
@@ -9346,7 +9367,7 @@ Transform:
   m_Children:
   - {fileID: 1403081973}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1989716185
 GameObject:
@@ -9629,10 +9650,13 @@ MonoBehaviour:
     minPosition: {x: 8, y: 8}
     maxPosition: {x: 8, y: 8}
     obligatory: 1
-  offset: {x: 14.66, y: 14.66}
-  Player: {fileID: 1625793267114153762, guid: 69d62e2e0d555104fbdcc4ba3b600c73, type: 3}
+  - room: {fileID: 5710794644438121482, guid: 364ccdadb71aa1e4ebfea59eb6526c9b, type: 3}
+    minPosition: {x: 3, y: 3}
+    maxPosition: {x: 3, y: 3}
+    obligatory: 1
+  offset: {x: 14.85, y: 14.75}
   WayPoints: {fileID: 2034445944}
-  cam: {fileID: 1314445283}
+  RoomObjs: []
 --- !u!4 &2004126370
 Transform:
   m_ObjectHideFlags: 0
@@ -10211,7 +10235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 709453932112465511, guid: d9a44d7f6fc07e94387d01cd946d9642, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4581492006410303560, guid: d9a44d7f6fc07e94387d01cd946d9642, type: 3}
       propertyPath: m_Name

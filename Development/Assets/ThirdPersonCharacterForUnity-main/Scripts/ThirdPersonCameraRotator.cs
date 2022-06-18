@@ -49,8 +49,12 @@ public class ThirdPersonCameraRotator : MonoBehaviour
     {
       instance = this;
     }
-    roofCheck = FindObjectOfType<RoofCheck>();
     Cursor.lockState = CursorLockMode.Locked;
+  }
+
+  public void Init()
+  {
+    roofCheck = LevelManager.instance.GetGameManager().GetRoofCheck();
   }
   void Update()
   {

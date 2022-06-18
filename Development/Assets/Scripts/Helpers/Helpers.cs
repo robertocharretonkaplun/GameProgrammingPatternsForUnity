@@ -15,7 +15,7 @@ public class Helpers : MonoBehaviour
     return false;
   }
 
-  public static bool IsPlayerNearToArea(Vector3 _target, Vector3 _this, float _area)
+  public static bool IsObjectNearToArea(Vector3 _target, Vector3 _this, float _area)
   {
     float distance = Vector3.Distance(_target, _this);
 

@@ -6,7 +6,7 @@ public class ThirdPersonControllerV2 : MonoBehaviour
 {
   [Header("Camera Attributes")]
   [SerializeField]
-  private Camera CameraFollow;
+  public Camera CameraFollow;
   [Header("Character Attributes")]
   public Animator animator;
   private CharacterController controller;

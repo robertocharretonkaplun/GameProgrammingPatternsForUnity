@@ -139,6 +139,7 @@ MonoBehaviour:
   player: {fileID: 960097786}
   timer: 2.5
   timeOfInspection: 5
+  IsRoofAtTop: 0
 --- !u!1 &1895614728890373033 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8196228039351284357, guid: 45e2428caaf30fe4ca09fc50c7ab867a, type: 3}

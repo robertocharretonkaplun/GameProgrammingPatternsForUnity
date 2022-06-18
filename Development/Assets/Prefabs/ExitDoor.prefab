@@ -146,6 +146,7 @@ MonoBehaviour:
   target: {fileID: 0}
   DoorLight: {fileID: 1572772}
   viewDistance: 1.5
+  IsDoorEnable: 0
 --- !u!1001 &9212321805702404502
 PrefabInstance:
   m_ObjectHideFlags: 0

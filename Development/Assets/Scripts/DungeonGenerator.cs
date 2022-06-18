@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DungeonGenerator : MonoBehaviour
 {
+  public static DungeonGenerator instance;
   public class Cell
   {
     public bool visited = false;
@@ -36,15 +37,46 @@ public class DungeonGenerator : MonoBehaviour
   public int startPos = 0;
   public Rule[] rooms;
   public Vector2 offset;
-  public GameObject Player;
   public Transform WayPoints;
   List<Cell> board;
-  public ThirdPersonCameraRotator cam;
 
+  public Transform[] RoomObjs;
   // Start is called before the first frame update
   void Awake()
   {
+    GenerateInstance();
+  }
+
+  public void Init()
+  {
     MazeGenerator();
+
+    SetRoomList();
+
+  }
+
+  public void GenerateInstance()
+  {
+    if (instance != null)
+    {
+      return;
+    }
+    else
+    {
+      instance = this;
+    }
+  }
+
+  public void SetRoomList()
+  {
+    // RoomObjs the array of point
+    RoomObjs = new Transform[transform.childCount];
+
+    // Set all the child points
+    for (int i = 0; i < RoomObjs.Length; i++)
+    {
+      RoomObjs[i] = transform.GetChild(i);
+    }
   }
 
   void GenerateDungeon()
@@ -86,16 +118,15 @@ public class DungeonGenerator : MonoBehaviour
               randomRoom = 0;
             }
           }
+          // Spawn player in initial Room
           if (i == 0 && j == 0)
           {
-            var player = Instantiate(Player, new Vector3(0, 1, 0), Quaternion.identity);
-            cam._target = player.transform.GetChild(0).transform.GetChild(3).transform;
+            LevelManager.instance.GetGameManager().GenerateThirdPersonCharacter();
           }
           var newRoom = Instantiate(rooms[randomRoom].room, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehavior>();
           newRoom.UpdateRoom(currentCell.status);
           newRoom.transform.GetChild(0).parent = WayPoints.transform;
           newRoom.name += " " + i + "-" + j;
-
         }
       }
     }

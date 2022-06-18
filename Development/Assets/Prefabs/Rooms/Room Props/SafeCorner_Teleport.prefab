@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 551255717703210974}
   - component: {fileID: 3708686602115694069}
   - component: {fileID: 4082005465707779442}
+  - component: {fileID: 406162393882103265}
   m_Layer: 0
   m_Name: BlackDoor
   m_TagString: Untagged
@@ -131,6 +132,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &406162393882103265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2969424584919385627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bf4b7771300bf1419fa4fbd4e61411d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayTime: 0
 --- !u!1 &6494164831618244608
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +254,7 @@ GameObject:
   - component: {fileID: 8641759547200260010}
   - component: {fileID: 3231348505663426513}
   - component: {fileID: 5306212319997609276}
+  - component: {fileID: 4011688513549704005}
   m_Layer: 0
   m_Name: BlackRoof
   m_TagString: Untagged
@@ -325,6 +340,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4011688513549704005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7875236901702278820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bf4b7771300bf1419fa4fbd4e61411d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayTime: 0
 --- !u!1001 &2802587189578788405
 PrefabInstance:
   m_ObjectHideFlags: 0

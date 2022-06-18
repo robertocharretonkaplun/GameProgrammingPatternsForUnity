@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4951604842482642795}
   - component: {fileID: 4213911552421897144}
   - component: {fileID: 1981962081024122389}
+  - component: {fileID: 2774785162616254573}
   m_Layer: 0
   m_Name: Wall 1
   m_TagString: Untagged
@@ -115,6 +116,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &2774785162616254573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3129134032914350400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bf4b7771300bf1419fa4fbd4e61411d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayTime: 0
 --- !u!1001 &285185425286613781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -194,7 +208,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee9beecf2e2ea944094b154cd0a583eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   Light: {fileID: 1690156386039955085}
+  viewDistance: 0.5
+  IsLeverActivated: 0
 --- !u!4 &7661353389682687859 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7613254849275540582, guid: 0d42de0728cb90b42a6ca4a0643f817f, type: 3}
