@@ -26,7 +26,7 @@ public class ExitDoor : MonoBehaviour
       {
         if (Input.GetKeyDown(KeyCode.E))
         {
-          SceneManagment.LoadLevel_0(); // Must be Random scene
+          SceneManagment.instance.LoadLevel_0(); // Must be Random scene
         }
       }
     }

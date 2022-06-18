@@ -28,7 +28,7 @@ public class SafeCorner : MonoBehaviour
     {
       if (!IsSafeRoom)
       {
-        SceneManagment.LoadLevel_0();
+        SceneManagment.instance.LoadLevel_0();
       }
     }
   }

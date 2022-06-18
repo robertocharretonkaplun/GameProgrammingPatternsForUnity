@@ -5,15 +5,40 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagment : MonoBehaviour
 {
-  public static void ChangeToRandomScene()
+  public static SceneManagment instance;
+  public Animator TransitionCrossfade;
+  public float transitionTime = 1f;
+
+  private void Awake()
+  {
+    if (instance != null)
+    {
+      return;
+    }
+    else
+    {
+      instance = this;
+    }
+  }
+
+  public  void ChangeToRandomScene()
   {
     int SceneIndex = Random.Range(0, SceneManager.sceneCount);
 
     SceneManager.LoadScene(SceneIndex);
+    StartCoroutine(LoadLevel(SceneIndex));
   }
 
-  public static void LoadLevel_0()
+  public void LoadLevel_0()
   {
-    SceneManager.LoadScene("MiniBackrooms");
+    StartCoroutine(LoadLevel(0));
+  }
+
+  IEnumerator LoadLevel(int LevelIndex)
+  {
+    TransitionCrossfade.SetTrigger("Start");
+
+    yield return new WaitForSeconds(transitionTime);
+    SceneManager.LoadScene(LevelIndex);
   }
 }
