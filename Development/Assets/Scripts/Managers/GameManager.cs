@@ -12,10 +12,13 @@ public class GameManager : MonoBehaviour
   public GameObject ThirdPersonCharacter;
   private GameObject ThirdPersonCharacterRef;
 
+  [Header("Enemies")]
+  public GameObject EnemyLevel1;
   [Header("Game Attributes & Rules")]
   public int levers = 0;
   public int leversMax = 3;
   public WorldDetector worldDetector;
+  public GameObject Crossfade;
   private void Awake()
   {
     if (instance != null)
@@ -30,19 +33,24 @@ public class GameManager : MonoBehaviour
 
   void Start()
   {
-    
+
   }
 
   public void Init()
   {
+    // Camera Init
     camera.Init();
+    // Player Generation
+    GenerateThirdPersonCharacter();
     //worldDetector.Init();
+    // Enemy Generation
+    GenerateEnemyLevel0(new Vector2(5, 5));
   }
 
   // Update is called once per frame
   void Update()
   {
-    
+
   }
 
   public void GenerateThirdPersonCharacter()
@@ -51,8 +59,20 @@ public class GameManager : MonoBehaviour
     var player = Instantiate(ThirdPersonCharacter, position, Quaternion.identity);
     var ThirdPersonPlayer = player.transform.GetChild(0);
     var target = ThirdPersonPlayer.transform.GetChild(3).transform;
+    camera.roofCheck = ThirdPersonCharacter.transform.GetChild(0).transform.GetChild(3).GetComponent<RoofCheck>();
     camera._target = target;
     ThirdPersonCharacterRef = player;
+  }
+
+  public void GenerateEnemyLevel0(Vector2 Position)
+  {
+    if (ThirdPersonCharacter != null)
+    {
+      Vector3 position = new Vector3(Position.x, 1, Position.y);
+      var Enemy = Instantiate(EnemyLevel1, position, Quaternion.identity);
+      //Enemy.GetComponent<CustomWander>().player = GetThirdPersonPlayerObj().transform;
+      Enemy.GetComponent<CustomWander>().crossfade = Crossfade;
+    }
   }
 
   public ThirdPersonControllerV2 GetThirdPersonPlayer()
@@ -60,7 +80,7 @@ public class GameManager : MonoBehaviour
     var ThirdPersonPlayer = ThirdPersonCharacter.transform.GetChild(0).GetComponent<ThirdPersonControllerV2>();
     return ThirdPersonPlayer;
   }
-  
+
   public GameObject GetThirdPersonPlayerObj()
   {
     var ThirdPersonPlayer = ThirdPersonCharacter.transform.GetChild(0).gameObject;

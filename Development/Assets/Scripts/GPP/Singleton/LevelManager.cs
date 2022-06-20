@@ -22,6 +22,9 @@ public class LevelManager : MonoBehaviour
 
   void Start()
   {
+    // Init AI
+    AIManager.instance.Init();
+    // Init Dungeon
     DungeonGenerator.instance.Init();
     // Init Game Manager
     GameManager.instance.Init();
@@ -51,5 +54,13 @@ public class LevelManager : MonoBehaviour
     return null;
   }
 
+  public AIManager GetAIManager()
+  {
+    if (AIManager.instance != null)
+    {
+      return AIManager.instance;
+    }
+    return null;
+  }
  
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 34b650f877e85864ca462846778ff7ad
+guid: 5dc2138757ff11d4db0a02f7e3771ba4
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
@@ -40,7 +40,7 @@ ModelImporter:
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 178
+      lastFrame: 231
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -125,11 +125,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 764a7ef325863bf4eaf08fad11fb62c0, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 

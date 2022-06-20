@@ -37,7 +37,7 @@ public class ThirdPersonCameraRotator : MonoBehaviour
   private float rotX = 0f;
   private float rotY = 0f;
   public float sensibility = 2.5f;
-  private RoofCheck roofCheck;
+  public RoofCheck roofCheck;
 
   private void Start()
   {
@@ -54,7 +54,8 @@ public class ThirdPersonCameraRotator : MonoBehaviour
 
   public void Init()
   {
-    roofCheck = LevelManager.instance.GetGameManager().GetRoofCheck();
+    //roofCheck = LevelManager.instance.GetGameManager().GetRoofCheck();
+    //_target = LevelManager.instance.GetGameManager().GetThirdPersonPlayer().transform.GetChild(3).transform;
   }
   void Update()
   {

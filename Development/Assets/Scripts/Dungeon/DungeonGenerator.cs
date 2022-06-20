@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DungeonGenerator : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class DungeonGenerator : MonoBehaviour
   List<Cell> board;
 
   public Transform[] RoomObjs;
+  
   // Start is called before the first frame update
   void Awake()
   {
@@ -53,6 +55,8 @@ public class DungeonGenerator : MonoBehaviour
 
     SetRoomList();
 
+    AIManager.instance.BuildNavMesh();
+    
   }
 
   public void GenerateInstance()
@@ -121,7 +125,8 @@ public class DungeonGenerator : MonoBehaviour
           // Spawn player in initial Room
           if (i == 0 && j == 0)
           {
-            LevelManager.instance.GetGameManager().GenerateThirdPersonCharacter();
+            //LevelManager.instance.GetGameManager().GenerateThirdPersonCharacter();
+            //LevelManager.instance.GetGameManager().GenerateEnemyLevel0(new Vector2(i * offset.x, -j * offset.y));
           }
           var newRoom = Instantiate(rooms[randomRoom].room, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehavior>();
           newRoom.UpdateRoom(currentCell.status);

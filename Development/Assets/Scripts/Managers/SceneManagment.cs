@@ -21,7 +21,7 @@ public class SceneManagment : MonoBehaviour
     }
   }
 
-  public  void ChangeToRandomScene()
+  public void ChangeToRandomScene()
   {
     int SceneIndex = Random.Range(0, SceneManager.sceneCount);
 

@@ -3,31 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
-
+using UnityEngine.UI;
 public class CustomWander : MonoBehaviour
 {
+  [Header("Agent Attributes")]
+  public int agentID = 0;
   public float speed = 10.0f;
-  private int PointIndex = 0;
-  private Transform target;
   public float EnemyTurnSpeed = 2.5f;
+  public bool IsSeeking = false;
+  public Transform player;
+  private Transform target;
+  public Animator animator;
+  private int PointIndex = 0;
 
+  [Header("Areas")]
   public float viewDistance = 8f;
   public float playerViewDistance = 8f;
   public float KillDistance = 1f;
+  public float FogDistance = 1f;
+
+  [Header("Agent Effects")]
+  public GameObject crossfade;
 
 
-  public Animator animator;
 
-  public Transform player;
-  public Transform point;
-  NavMeshAgent agent;
-  public bool IsSeeking = false;
   // Start is called before the first frame update
   void Start()
   {
-    target = waypoints.Waypoints[0];
+    target = LevelManager.instance.GetDungeonGenerator().RoomObjs[0];
     player = FindObjectOfType<ThirdPersonControllerV2>().transform;
-    agent = GetComponent<NavMeshAgent>();
+
+    agentID = LevelManager.instance.GetAIManager().NewAgent(GetComponent<NavMeshAgent>(), 2.5f);
   }
 
   // Update is called once per frame
@@ -38,10 +44,10 @@ public class CustomWander : MonoBehaviour
 
     if (distance <= playerViewDistance)
     {
-      //transform.GetChild(0).rotation = new Quaternion(0, 270, 0, 0);
       animator.SetBool("IsWalking", true);
       IsSeeking = true;
-      agent.SetDestination(player.position);
+
+      LevelManager.instance.GetAIManager().FollowTarget(player, player.position);
       if (distance <= KillDistance)
       {
         SceneManager.LoadScene("MiniBackrooms");
@@ -49,11 +55,6 @@ public class CustomWander : MonoBehaviour
     }
     else
     {
-      //if (IsSeeking)
-      //{
-      //  agent.SetDestination(point.position);
-      //  agent.isStopped = true;
-      //}
       IsSeeking = false;
 
       Vector3 direction = target.position - transform.position;
@@ -65,20 +66,18 @@ public class CustomWander : MonoBehaviour
 
       // Look at next point
       LookAtNextPoit(direction: direction);
-      agent.SetDestination(target.position);
+      LevelManager.instance.GetAIManager().FollowTarget(target, target.position);
       animator.SetBool("IsWalking", true);
-
-
-      //Check();
-      //animator.SetBool("IsWalking", false);
     }
 
+
+    PlayerNearToEnemy();
   }
 
   void ChangeToNextPoint()
   {
     // If the enemy reach the last point, its destroyed
-    if (PointIndex >= waypoints.Waypoints.Length - 1)
+    if (PointIndex >= LevelManager.instance.GetDungeonGenerator().RoomObjs.Length - 1)
     {
       //Destroy(gameObject);
       //Time.timeScale = 0;
@@ -87,9 +86,8 @@ public class CustomWander : MonoBehaviour
     else
     {
       // Change point index
-      //PointIndex = Random.Range(0, waypoints.Waypoints.Length-1);
       PointIndex++;// Random.Range(0, waypoints.Waypoints.Length-1);
-      target = waypoints.Waypoints[PointIndex];
+      target = LevelManager.instance.GetDungeonGenerator().RoomObjs[PointIndex];
     }
   }
 
@@ -111,28 +109,21 @@ public class CustomWander : MonoBehaviour
     Gizmos.DrawWireSphere(transform.position, playerViewDistance);
     Gizmos.color = Color.yellow;
     Gizmos.DrawWireSphere(transform.position, KillDistance);
+    Gizmos.color = Color.green;
+    Gizmos.DrawWireSphere(transform.position, FogDistance);
   }
 
-  public void Check()
+  public void PlayerNearToEnemy()
   {
-    Vector3 sensor;
-    RaycastHit hit;
-    float avoidDetection;
-
-
-    sensor = transform.position + (transform.forward * viewDistance);
-    if (Physics.Raycast(sensor, transform.forward, out hit, viewDistance))
+    var alpha = crossfade.GetComponent<CanvasGroup>().alpha;
+    if (Vector3.Distance(transform.position, player.position) <= FogDistance && alpha <= .8f)
     {
-      Debug.DrawLine(transform.position, hit.point, Color.green);
-      float distance = Vector3.Distance(transform.position, hit.point);
-      Debug.Log("Distance: " + distance);
-      if (distance >= viewDistance && hit.transform.gameObject.tag == "Enemy")
-      {
-        Vector3 dirToEnemy = transform.position - hit.point;
-        Vector3 newPos = transform.position + dirToEnemy;
-        transform.Translate(newPos.normalized * (speed) * Time.deltaTime, Space.World);
-      }
+      crossfade.GetComponent<CanvasGroup>().alpha += .01f;
     }
+    else
+    {
+      crossfade.GetComponent<CanvasGroup>().alpha -= .01f;
 
+    }
   }
 }
