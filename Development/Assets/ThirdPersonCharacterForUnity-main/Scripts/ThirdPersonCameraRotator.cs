@@ -38,6 +38,7 @@ public class ThirdPersonCameraRotator : MonoBehaviour
   private float rotY = 0f;
   public float sensibility = 2.5f;
   public RoofCheck roofCheck;
+  public bool IsTouchingAWall = false;
 
   private void Start()
   {
@@ -75,11 +76,15 @@ public class ThirdPersonCameraRotator : MonoBehaviour
     if (isCamLock)
     {
       CameraRotation();
+      CheckForWalls();
+      //_distanceFromTarget = Mathf.Lerp(_distanceFromTarget, 3.0f, 5 * Time.deltaTime);
       if (!roofCheck.IsRoofAtTop)
       {
-        OldDistance = _distanceFromTarget;
 
+        OldDistance = _distanceFromTarget;
         _distanceFromTarget += Input.mouseScrollDelta.y * 50 * Time.deltaTime;
+
+
       }
     }
     else
@@ -97,6 +102,7 @@ public class ThirdPersonCameraRotator : MonoBehaviour
       rotX += Input.GetAxis("Mouse Y") * -1 * sensibility;
       transform.localEulerAngles = new Vector3(rotX, rotY, 0);
     }
+
   }
 
   void CameraMovement()
@@ -116,6 +122,8 @@ public class ThirdPersonCameraRotator : MonoBehaviour
   public void Zoom()
   {
     transform.Translate(0, 0, Input.mouseScrollDelta.y * 50 * Time.deltaTime);
+
+
   }
 
   void CameraRotation()
@@ -137,5 +145,51 @@ public class ThirdPersonCameraRotator : MonoBehaviour
 
     // Substract forward vector of the GameObject to point its forward vector to the target
     transform.position = _target.position - transform.forward * _distanceFromTarget;
+  }
+
+
+  private void OnDrawGizmosSelected()
+  {
+    Gizmos.color = Color.blue;
+    Gizmos.DrawLine(transform.position, Vector3.forward * 10);
+  }
+  void CheckForWalls()
+  {
+    Vector3 DesiredCamPos = transform.TransformPoint(transform.localPosition.normalized * 1f);
+    RaycastHit hit;
+
+    if (Physics.Linecast(transform.position, DesiredCamPos, out hit))
+    {
+      if (hit.transform.tag == "Wall")
+      {
+
+        StartCoroutine(ZoomIn(hit.distance));
+      }
+      //_distanceFromTarget = Mathf.Clamp(hit.distance, 1f, 1f);
+      //_distanceFromTarget = Mathf.Lerp(hit.distance, 1.0f, 5 * Time.deltaTime);
+    }
+    else
+    {
+      
+      // _distanceFromTarget = Mathf.Lerp(_distanceFromTarget, 3.0f, 5 * Time.deltaTime);
+      //_distanceFromTarget = OldDistance;
+    }
+
+    //transform.localPosition = transform.localPosition.normalized * _distanceFromTarget;
+  }
+
+  IEnumerator ZoomIn(float distance)
+  {
+    //_distanceFromTarget = Mathf.Lerp(distance, 1.0f, 5 * Time.deltaTime);
+    //_distanceFromTarget = 1f;
+    _distanceFromTarget = Mathf.Lerp(_distanceFromTarget, 1.0f, 5 * Time.deltaTime);
+    yield return new WaitForSeconds(3f);
+    if (_distanceFromTarget <= 2)
+    {
+      _distanceFromTarget = Mathf.Lerp(_distanceFromTarget, 3.0f, 5 * Time.deltaTime);
+    }
+    //_distanceFromTarget = Mathf.Lerp(_distanceFromTarget, 3.0f, 5 * Time.deltaTime);
+    //_distanceFromTarget = 3f;
+    //_distanceFromTarget = Mathf.Lerp(distance,OldDistance, 5 * Time.deltaTime);
   }
 }

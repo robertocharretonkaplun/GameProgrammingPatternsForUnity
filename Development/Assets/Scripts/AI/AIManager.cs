@@ -5,9 +5,10 @@ using UnityEngine.AI;
 
 public class AIManager : MonoBehaviour
 {
+  [Header("AI Attributes")]
   public static AIManager instance;
-  public List<NavMeshAgent> agents;
   private NavMeshSurface navMeshSurface;
+  public List<NavMeshAgent> agents;
   // Start is called before the first frame update
   void Awake()
   {

@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     var player = Instantiate(ThirdPersonCharacter, position, Quaternion.identity);
     var ThirdPersonPlayer = player.transform.GetChild(0);
     var target = ThirdPersonPlayer.transform.GetChild(3).transform;
-    camera.roofCheck = ThirdPersonCharacter.transform.GetChild(0).transform.GetChild(3).GetComponent<RoofCheck>();
+    camera.roofCheck = ThirdPersonPlayer.transform.GetChild(3).GetComponent<RoofCheck>();
     camera._target = target;
     ThirdPersonCharacterRef = player;
   }
