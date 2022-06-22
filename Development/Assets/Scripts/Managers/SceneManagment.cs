@@ -21,12 +21,25 @@ public class SceneManagment : MonoBehaviour
     }
   }
 
+  private void Update()
+  {
+    if (Input.GetKey(KeyCode.Alpha1))
+    {
+      LoadLevel_0();
+    }
+  }
+
   public void ChangeToRandomScene()
   {
     int SceneIndex = Random.Range(0, SceneManager.sceneCount);
 
     SceneManager.LoadScene(SceneIndex);
     StartCoroutine(LoadLevel(SceneIndex));
+  }
+
+  public void LoadMainMenu()
+  {
+    StartCoroutine(LoadLevel(2));
   }
 
   public void LoadLevel_0()

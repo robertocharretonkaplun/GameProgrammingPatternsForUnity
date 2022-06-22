@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
   {
     if (ThirdPersonCharacter != null)
     {
-      Vector3 position = new Vector3(Position.x, 1, Position.y);
+      Vector3 position = new Vector3(Position.x, 0, Position.y);
       var Enemy = Instantiate(EnemyLevel1, position, Quaternion.identity);
       //Enemy.GetComponent<CustomWander>().player = GetThirdPersonPlayerObj().transform;
       Enemy.GetComponent<CustomWander>().crossfade = Crossfade;
@@ -96,6 +96,13 @@ public class GameManager : MonoBehaviour
   {
     var ThirdPersonPlayer = ThirdPersonCharacterRef.transform.GetChild(0);
     var target = ThirdPersonPlayer.transform.GetChild(3).GetComponent<RoofCheck>();
+    return target;
+  }
+  
+  public HandLamp GetLamp()
+  {
+    var ThirdPersonPlayer = ThirdPersonCharacterRef.transform.GetChild(0);
+    var target = ThirdPersonPlayer.transform.GetChild(5).GetComponent<HandLamp>();
     return target;
   }
 }

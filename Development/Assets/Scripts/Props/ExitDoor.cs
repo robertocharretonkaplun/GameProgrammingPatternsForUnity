@@ -17,26 +17,29 @@ public class ExitDoor : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (Helpers.PlayerHasAllLevers())
-    {
-      IsDoorEnable = true;
-      float distance = Vector3.Distance(target.position, transform.position);
-
-      if (distance <= viewDistance)
-      {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-          SceneManagment.instance.LoadLevel_0(); // Must be Random scene
-        }
-      }
-    }
+    IsDoorEnable = Helpers.PlayerHasAllLevers();
     if (!IsDoorEnable)
     {
       DoorLight.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
     }
     else
     {
-      DoorLight.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+      OpenDoor();
+    }
+  }
+
+
+  public void OpenDoor()
+  {
+    DoorLight.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+    float distance = Vector3.Distance(target.position, transform.position);
+
+    if (distance <= viewDistance)
+    {
+      if (Input.GetKeyDown(KeyCode.E))
+      {
+        SceneManagment.instance.LoadLevel_0(); // Must be Random scene
+      }
     }
   }
 

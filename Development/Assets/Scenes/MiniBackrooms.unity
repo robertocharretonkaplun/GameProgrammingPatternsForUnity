@@ -288,6 +288,68 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &719892216
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1988834191}
+    m_Modifications:
+    - target: {fileID: 628387445539987188, guid: 5189412a33c3d944cae7d8b6773b1812, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 628387445539987188, guid: 5189412a33c3d944cae7d8b6773b1812, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 628387445539987188, guid: 5189412a33c3d944cae7d8b6773b1812, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 628387445539987188, guid: 5189412a33c3d944cae7d8b6773b1812, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 628387445539987188, guid: 5189412a33c3d944cae7d8b6773b1812, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 628387445539987188, guid: 5189412a33c3d944cae7d8b6773b1812, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 628387445539987188, guid: 5189412a33c3d944cae7d8b6773b1812, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 628387445539987188, guid: 5189412a33c3d944cae7d8b6773b1812, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 628387445539987188, guid: 5189412a33c3d944cae7d8b6773b1812, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 628387445539987188, guid: 5189412a33c3d944cae7d8b6773b1812, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 628387445539987188, guid: 5189412a33c3d944cae7d8b6773b1812, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 628387445539987189, guid: 5189412a33c3d944cae7d8b6773b1812, type: 3}
+      propertyPath: m_Name
+      value: Audio
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5189412a33c3d944cae7d8b6773b1812, type: 3}
+--- !u!4 &719892217 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 628387445539987188, guid: 5189412a33c3d944cae7d8b6773b1812, type: 3}
+  m_PrefabInstance: {fileID: 719892216}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &866624900
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,7 +924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 1314445283}
   ThirdPersonCharacter: {fileID: 1625793267114153762, guid: 69d62e2e0d555104fbdcc4ba3b600c73, type: 3}
-  EnemyLevel1: {fileID: 1123657981012931191, guid: f3f7ef51203e4204ab5091ea78bc78c6, type: 3}
+  EnemyLevel1: {fileID: 6868706028720727613, guid: 525b96b1e0130444da4f13213b82639f, type: 3}
   levers: 0
   leversMax: 0
   worldDetector: {fileID: 0}
@@ -1237,6 +1299,7 @@ Transform:
   m_Children:
   - {fileID: 1403081973}
   - {fileID: 1822671259}
+  - {fileID: 719892217}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1297,6 +1360,14 @@ MonoBehaviour:
     maxPosition: {x: 3, y: 3}
     obligatory: 1
   - room: {fileID: 5710794644438121482, guid: 9505bf90be621a14f9298178866a3927, type: 3}
+    minPosition: {x: 2, y: 2}
+    maxPosition: {x: 10, y: 10}
+    obligatory: 0
+  - room: {fileID: 5710794644438121482, guid: d3fa14e669e0961478c39ff02cdbd2c0, type: 3}
+    minPosition: {x: 2, y: 2}
+    maxPosition: {x: 10, y: 10}
+    obligatory: 0
+  - room: {fileID: 5710794644438121482, guid: 24bb3fd380a92db45be538e3316f5d5c, type: 3}
     minPosition: {x: 2, y: 2}
     maxPosition: {x: 10, y: 10}
     obligatory: 0
@@ -1377,7 +1448,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2056339122
 Transform:
   m_ObjectHideFlags: 0
