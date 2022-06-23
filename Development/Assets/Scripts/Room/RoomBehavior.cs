@@ -7,6 +7,9 @@ public class RoomBehavior : MonoBehaviour
   public GameObject[] Walls; // 0 - Up 1 - Down 2 - Right 3 - Left
   public GameObject[] Doors;
   public bool IsRoomEnable = true;
+
+  [Header("Triggers")]
+  public GameObject deathFloor;
   //public bool[] TestStatus;
   private void Update()
   {
@@ -25,5 +28,10 @@ public class RoomBehavior : MonoBehaviour
         Walls[i].SetActive(!status[i]);
       }
     }
+  }
+
+  private void OnCollisionEnter(Collision collision)
+  {
+
   }
 }

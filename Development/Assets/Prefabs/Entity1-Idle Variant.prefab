@@ -188,7 +188,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 3, z: 0}
+  m_Center: {x: 0, y: 3.5, z: 0}
 --- !u!136 &4294719746540014039
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -202,7 +202,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 6
   m_Direction: 1
-  m_Center: {x: 0, y: 3, z: 0}
+  m_Center: {x: 0, y: 3.5, z: 0}
 --- !u!114 &1462396427483094270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +235,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6868706028720727613}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 1.89
   m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50

@@ -44,7 +44,8 @@ public class GameManager : MonoBehaviour
     GenerateThirdPersonCharacter();
     //worldDetector.Init();
     // Enemy Generation
-    GenerateEnemyLevel0(new Vector2(5, 5));
+    int randomPoint = Random.Range(0, DungeonGenerator.instance.WayPoints.childCount);
+    GenerateEnemyLevel0(new Vector2(DungeonGenerator.instance.RoomObjs[randomPoint].position.x, DungeonGenerator.instance.RoomObjs[randomPoint].position.y));
   }
 
   // Update is called once per frame

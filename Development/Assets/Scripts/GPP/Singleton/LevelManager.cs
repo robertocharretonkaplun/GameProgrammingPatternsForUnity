@@ -28,6 +28,8 @@ public class LevelManager : MonoBehaviour
     DungeonGenerator.instance.Init();
     // Init Game Manager
     GameManager.instance.Init();
+
+    SceneManagment.instance.SetLevelTitle();
   }
 
   void Update()

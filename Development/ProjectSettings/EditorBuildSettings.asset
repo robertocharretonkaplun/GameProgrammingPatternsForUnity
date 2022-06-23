@@ -5,16 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/OpenGameScene.unity
+    guid: c9cb17291c0bde344a9121988f6044c3
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: a418d106ffc171f469911abe4d643142
   - enabled: 1
     path: Assets/Scenes/MiniBackrooms.unity
     guid: 923c0e7ce15e05946bd91c2e69feb83b
   - enabled: 1
     path: Assets/Scenes/MiniBackrooms-Level-0.unity
     guid: 6a25c6f9331a798478e3a8f6b7aa5292
-  - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: a418d106ffc171f469911abe4d643142
-  - enabled: 1
-    path: Assets/Scenes/OpenGameScene.unity
-    guid: c9cb17291c0bde344a9121988f6044c3
   m_configObjects: {}

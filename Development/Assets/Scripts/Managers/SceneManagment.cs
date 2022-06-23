@@ -7,6 +7,7 @@ public class SceneManagment : MonoBehaviour
 {
   public static SceneManagment instance;
   public Animator TransitionCrossfade;
+  public Animator TitleCrossfade;
   public float transitionTime = 1f;
 
   private void Awake()
@@ -27,6 +28,10 @@ public class SceneManagment : MonoBehaviour
     {
       LoadLevel_0();
     }
+    if (Input.GetKey(KeyCode.Alpha2))
+    {
+      StartCoroutine(LevelTitle());
+    }
   }
 
   public void ChangeToRandomScene()
@@ -39,12 +44,13 @@ public class SceneManagment : MonoBehaviour
 
   public void LoadMainMenu()
   {
-    StartCoroutine(LoadLevel(2));
+    StartCoroutine(LoadLevel(0));
   }
 
   public void LoadLevel_0()
   {
-    StartCoroutine(LoadLevel(0));
+    StartCoroutine(LoadLevel(1));
+    //StartCoroutine(LevelTitle());
   }
 
   IEnumerator LoadLevel(int LevelIndex)
@@ -53,5 +59,25 @@ public class SceneManagment : MonoBehaviour
 
     yield return new WaitForSeconds(transitionTime);
     SceneManager.LoadScene(LevelIndex);
+  }
+  
+  public void SetLevelTitle()
+  {
+    StartCoroutine(LevelTitle());
+  }
+
+  IEnumerator LevelTitle()
+  {
+    //TitleCrossfade.Play("TitleCrossfade");
+
+    //TitleCrossfade.SetBool("Start", true);
+    yield return new WaitForSeconds(10);
+    //TitleCrossfade.SetBool("Start", false);
+    //TitleCrossfade.SetTrigger("End");
+  }
+
+  public void ExitGame()
+  {
+    Application.Quit();
   }
 }
