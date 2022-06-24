@@ -7,7 +7,9 @@ public class GameManager : MonoBehaviour
 {
   public static GameManager instance;
   [Header("Cameras")]
-  public ThirdPersonCameraRotator camera;
+  //public ThirdPersonCameraRotator camera;
+
+  public Cinemachine.Cinemachine3rdPersonFollow follow;
   [Header("Characters")]
   public GameObject ThirdPersonCharacter;
   private GameObject ThirdPersonCharacterRef;
@@ -39,9 +41,9 @@ public class GameManager : MonoBehaviour
   public void Init()
   {
     // Camera Init
-    camera.Init();
+    //GetComponent<Camera>().Init();
     // Player Generation
-    GenerateThirdPersonCharacter();
+    //GenerateThirdPersonCharacter();
     //worldDetector.Init();
     // Enemy Generation
     int randomPoint = Random.Range(0, DungeonGenerator.instance.WayPoints.childCount);
@@ -60,8 +62,9 @@ public class GameManager : MonoBehaviour
     var player = Instantiate(ThirdPersonCharacter, position, Quaternion.identity);
     var ThirdPersonPlayer = player.transform.GetChild(0);
     var target = ThirdPersonPlayer.transform.GetChild(3).transform;
-    camera.roofCheck = ThirdPersonPlayer.transform.GetChild(3).GetComponent<RoofCheck>();
-    camera._target = target;
+    //GetComponent<Camera>().roofCheck = ThirdPersonPlayer.transform.GetChild(3).GetComponent<RoofCheck>();
+    //GetComponent<Camera>()._target = target;
+    //follow. = player.transform.GetChild(0); 
     ThirdPersonCharacterRef = player;
   }
 
@@ -90,7 +93,7 @@ public class GameManager : MonoBehaviour
 
   public GameObject GetThirdPersonCharacter()
   {
-    return ThirdPersonCharacterRef;
+    return ThirdPersonCharacter;
   }
 
   public RoofCheck GetRoofCheck()
@@ -102,7 +105,7 @@ public class GameManager : MonoBehaviour
   
   public HandLamp GetLamp()
   {
-    var ThirdPersonPlayer = ThirdPersonCharacterRef.transform.GetChild(0);
+    var ThirdPersonPlayer = ThirdPersonCharacter.transform.GetChild(0);
     var target = ThirdPersonPlayer.transform.GetChild(5).GetComponent<HandLamp>();
     return target;
   }

@@ -6,9 +6,9 @@ using TMPro;
 [System.Serializable]
 public class Task
 {
-  public int taskID;
+  public int ID;
   public string task;
-  public bool IsTaskComplete;
+  public bool IsCompleted;
 }
 [System.Serializable]
 public class TaskContainer
@@ -44,9 +44,9 @@ public class TaskManager : MonoBehaviour
       {
         Mission.text = M.task;
         var mission = Instantiate(Mission, transform.position, Quaternion.identity);
-        mission.transform.parent = container.transform;
+        mission.transform.SetParent(container.transform);
         // Complete Task
-        if (M.IsTaskComplete)
+        if (M.IsCompleted)
         {
           mission.fontStyle = FontStyles.Strikethrough;
         }
@@ -57,10 +57,10 @@ public class TaskManager : MonoBehaviour
       {
         MainTask.text = MT.task;
         var mt = Instantiate(MainTask, transform.position, Quaternion.identity);
-        mt.transform.parent = container.transform;
+        mt.transform.SetParent(container.transform);
 
         // Complete Task
-        if (MT.IsTaskComplete)
+        if (MT.IsCompleted)
         {
           mt.fontStyle = FontStyles.Strikethrough;
         }
@@ -72,10 +72,10 @@ public class TaskManager : MonoBehaviour
       {
         SecundaryTask.text = ST.task;
         var st = Instantiate(SecundaryTask, transform.position, Quaternion.identity);
-        st.transform.parent = container.transform;
+        st.transform.SetParent(container.transform);
 
         // Complete Task
-        if (ST.IsTaskComplete)
+        if (ST.IsCompleted)
         {
           st.fontStyle = FontStyles.Strikethrough;
         }

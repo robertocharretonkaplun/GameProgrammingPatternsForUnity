@@ -31,7 +31,7 @@ public class CustomWander : MonoBehaviour
   void Start()
   {
     target = LevelManager.instance.GetDungeonGenerator().RoomObjs[0];
-    player = FindObjectOfType<ThirdPersonControllerV2>().transform;
+    player = GameManager.instance.GetThirdPersonCharacter().transform;
 
     agentID = LevelManager.instance.GetAIManager().NewAgent(GetComponent<NavMeshAgent>(), 2.5f);
   }

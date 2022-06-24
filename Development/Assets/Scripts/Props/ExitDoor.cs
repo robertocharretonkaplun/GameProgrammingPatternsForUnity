@@ -11,7 +11,7 @@ public class ExitDoor : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-    target = FindObjectOfType<ThirdPersonControllerV2>().transform;
+    target = LevelManager.instance.GetGameManager().GetThirdPersonCharacter().transform;
   }
 
   // Update is called once per frame
