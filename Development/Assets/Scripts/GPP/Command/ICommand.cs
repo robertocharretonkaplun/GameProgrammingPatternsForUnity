@@ -4,4 +4,9 @@ public interface ICommand
   {
 
   }
+
+  void Execute(float x, float y, float z)
+  {
+
+  }
 }

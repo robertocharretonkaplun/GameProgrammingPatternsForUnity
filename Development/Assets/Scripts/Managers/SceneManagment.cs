@@ -7,7 +7,7 @@ public class SceneManagment : MonoBehaviour
 {
   public static SceneManagment instance;
   public Animator TransitionCrossfade;
-  public Animator TitleCrossfade;
+ // public Animator TitleCrossfade;
   public float transitionTime = 1f;
 
   private void Awake()

@@ -130,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2635035279492231872, guid: 4911b731464b2f849ae988541c3e5785, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5513184065704567460, guid: 4911b731464b2f849ae988541c3e5785, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5710794644438121482, guid: 4911b731464b2f849ae988541c3e5785, type: 3}
       propertyPath: m_Name
       value: Room-Base
@@ -1594,6 +1602,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 521702506867232951, guid: a3e68cd3d5ed8534385e709f441f4902, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 640249986665167247, guid: a3e68cd3d5ed8534385e709f441f4902, type: 3}
       propertyPath: m_BoundingSphereOverride.w
       value: -1.4619285e+15
@@ -2305,7 +2317,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TransitionCrossfade: {fileID: 1490148269}
-  TitleCrossfade: {fileID: 0}
   transitionTime: 1
 --- !u!1 &1437477166
 GameObject:
