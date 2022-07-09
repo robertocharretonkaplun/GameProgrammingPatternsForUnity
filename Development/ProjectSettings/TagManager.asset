@@ -10,6 +10,8 @@ TagManager:
   - CinemachineTarget
   - SpawnPoint
   - Rooms
+  - TradeScreen
+  - Canvas
   layers:
   - Default
   - TransparentFX

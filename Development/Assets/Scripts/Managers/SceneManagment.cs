@@ -49,7 +49,12 @@ public class SceneManagment : MonoBehaviour
 
   public void LoadLevel_0()
   {
-    StartCoroutine(LoadLevel(1));
+    StartCoroutine(LoadLevel(4));
+    //StartCoroutine(LevelTitle());
+  }
+  public void LoadTutorial()
+  {
+    StartCoroutine(LoadLevel(5));
     //StartCoroutine(LevelTitle());
   }
 

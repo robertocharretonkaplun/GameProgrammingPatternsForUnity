@@ -55,7 +55,7 @@ public class OcclusionOptimizator : MonoBehaviour
       ray = camera.ViewportPointToRay(new Vector3(Points[i].x, Points[i].y, 0));
       if (Physics.Raycast(ray, out hit, RayDistance))
       {
-        Debug.DrawRay(transform.position, hit.point);
+        //Debug.DrawRay(transform.position, hit.point);
         if (ocl = hit.transform.GetComponent<OcclusionObject>())
         {
           ocl.HitOcclude(stayTime);

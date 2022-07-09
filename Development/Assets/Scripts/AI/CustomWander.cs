@@ -50,7 +50,7 @@ public class CustomWander : MonoBehaviour
       LevelManager.instance.GetAIManager().FollowTarget(player, player.position);
       if (distance <= KillDistance)
       {
-        SceneManager.LoadScene("MiniBackrooms");
+        SceneManager.LoadScene("MiniBackrooms2");
       }
     }
     else

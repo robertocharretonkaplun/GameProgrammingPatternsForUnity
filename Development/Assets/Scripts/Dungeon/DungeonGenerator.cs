@@ -34,6 +34,7 @@ public class DungeonGenerator : MonoBehaviour
 
   }
 
+  
   public Vector2Int size;
   public int startPos = 0;
   public Rule[] rooms;
@@ -51,6 +52,8 @@ public class DungeonGenerator : MonoBehaviour
 
   public void Init()
   {
+    
+
     MazeGenerator();
 
     SetRoomList();

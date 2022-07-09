@@ -29,8 +29,7 @@ public class Interaction : MonoBehaviour
 
   private void OnDrawGizmosSelected()
   {
-    Gizmos.color = Color.cyan;
-    Gizmos.DrawWireSphere(InteractionPoint.position, InteractionDistance);
+    
   }
 
 }

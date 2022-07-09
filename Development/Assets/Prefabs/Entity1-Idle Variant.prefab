@@ -222,7 +222,7 @@ MonoBehaviour:
   player: {fileID: 0}
   animator: {fileID: 214334148015695613}
   viewDistance: 2.12
-  playerViewDistance: 10
+  playerViewDistance: 15
   KillDistance: 1.35
   FogDistance: 3
   crossfade: {fileID: 0}

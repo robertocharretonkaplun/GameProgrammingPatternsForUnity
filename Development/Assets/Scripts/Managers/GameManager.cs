@@ -2,10 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 public class GameManager : MonoBehaviour
 {
   public static GameManager instance;
+  [Header("UI")]
+  public GameObject TradeWindow;
+  public TMP_Text DialogName;
+  public TMP_Text Dialog;
+
+  public Animator MenuAnimator;
+  public GameObject Menu;
+  public bool IsMenuActive;
   [Header("Cameras")]
   //public ThirdPersonCameraRotator camera;
 
@@ -15,10 +23,13 @@ public class GameManager : MonoBehaviour
   private GameObject ThirdPersonCharacterRef;
 
   [Header("Enemies")]
+  public bool LevelHasEnemies = false;
   public GameObject EnemyLevel1;
   [Header("Game Attributes & Rules")]
   public int levers = 0;
   public int leversMax = 3;
+  public int NPCCounter = 0;
+  public int WallType = 3;
   public WorldDetector worldDetector;
   public GameObject Crossfade;
   private void Awake()
@@ -46,14 +57,20 @@ public class GameManager : MonoBehaviour
     //GenerateThirdPersonCharacter();
     //worldDetector.Init();
     // Enemy Generation
-    int randomPoint = Random.Range(0, DungeonGenerator.instance.WayPoints.childCount);
-    GenerateEnemyLevel0(new Vector2(DungeonGenerator.instance.RoomObjs[randomPoint].position.x, DungeonGenerator.instance.RoomObjs[randomPoint].position.y));
+    if (LevelHasEnemies)
+    {
+      int randomPoint = Random.Range(0, DungeonGenerator.instance.WayPoints.childCount);
+      GenerateEnemyLevel0(new Vector2(DungeonGenerator.instance.RoomObjs[randomPoint].position.x, DungeonGenerator.instance.RoomObjs[randomPoint].position.y));
+    }
   }
 
   // Update is called once per frame
   void Update()
   {
-
+    if (Input.GetKeyDown(KeyCode.Escape))
+    {
+      ActivateMenu();
+    }
   }
 
   public void GenerateThirdPersonCharacter()
@@ -76,6 +93,42 @@ public class GameManager : MonoBehaviour
       var Enemy = Instantiate(EnemyLevel1, position, Quaternion.identity);
       //Enemy.GetComponent<CustomWander>().player = GetThirdPersonPlayerObj().transform;
       Enemy.GetComponent<CustomWander>().crossfade = Crossfade;
+    }
+  }
+
+  public void ActivateMenu()
+  {
+    if (!IsMenuActive)
+    {
+      Menu.SetActive(true);
+      MenuAnimator.SetBool("IsOpen", false);
+      IsMenuActive = true;
+      if (!MenuAnimator.enabled)
+      {
+
+        Time.timeScale = 0;
+      }
+      Cursor.lockState = CursorLockMode.None;
+    }
+    else
+    {
+      //MenuAnimator.SetBool("IsOpen", true);
+
+      Menu.SetActive(false);
+      IsMenuActive = false;
+      Time.timeScale = 1;
+      Cursor.lockState = CursorLockMode.Locked;
+    }
+  }
+
+  public void DeactivateMenu()
+  {
+    if (IsMenuActive)
+    {
+      Menu.SetActive(false);
+      IsMenuActive = false;
+      Time.timeScale = 1;
+      Cursor.lockState = CursorLockMode.Locked;
     }
   }
 
@@ -102,11 +155,32 @@ public class GameManager : MonoBehaviour
     var target = ThirdPersonPlayer.transform.GetChild(3).GetComponent<RoofCheck>();
     return target;
   }
-  
+
   public HandLamp GetLamp()
   {
     var ThirdPersonPlayer = ThirdPersonCharacter.transform.GetChild(0);
     var target = ThirdPersonPlayer.transform.GetChild(5).GetComponent<HandLamp>();
     return target;
+  }
+
+  public GameObject GetTradeWindow()
+  {
+    return TradeWindow;
+  }
+
+  public TMP_Text GetNameText()
+  {
+    return DialogName;
+  }
+
+  public TMP_Text GetDialogText()
+  {
+    return Dialog;
+  }
+
+
+  public int GetWallType()
+  {
+    return WallType;
   }
 }

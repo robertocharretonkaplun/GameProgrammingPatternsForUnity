@@ -8,6 +8,9 @@ public class ExitDoor : MonoBehaviour
   public GameObject DoorLight;
   public float viewDistance = 1.5f;
   public bool IsDoorEnable;
+  public bool DoorHasPassword;
+  public int Password = 0;
+  public int PasswordInput = 0;
   // Start is called before the first frame update
   void Start()
   {
