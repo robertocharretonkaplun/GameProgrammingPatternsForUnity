@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.AI;
 public class NPC : Interaction
 {
   [Header("NPC General Settings")]
@@ -57,6 +58,8 @@ public class NPC : Interaction
 
     // Trade System
     //TradeUI = LevelManager.instance.GetGameManager().GetTradeWindow();
+    // AI
+    AgentID = AIManager.instance.NewAgent(GetComponent<NavMeshAgent>(), AgentSpeed);
   }
 
   // Update is called once per frame
@@ -69,20 +72,14 @@ public class NPC : Interaction
       DialogSystemM();
       // Trade System
       TradeSystem();
+      // AI
+      AI();
     }
   }
 
   void InitDialogSystem()
   {
     NameText.text = NPCName;
-    //DialogRef = Instantiate(DialogPref, transform.position, transform.rotation);
-    //DialogRef.transform.parent = GameObject.FindGameObjectWithTag("Canvas").transform;
-    //DialogRef.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.0f);
-    //DialogRef.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
-    //DialogRef.GetComponent<RectTransform>().offsetMin = new Vector2(200, 0);
-    //DialogRef.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
-    //NPCNameText = DialogRef.transform.GetChild(0).GetComponent<TMP_Text>();
-    //NPCDialogText = DialogRef.transform.GetChild(1).GetComponent<TMP_Text>();
   }
   void DialogSystemM()
   {
@@ -133,6 +130,14 @@ public class NPC : Interaction
     {
       IsTrading = false;
       TradeUI.SetActive(false);
+    }
+  }
+
+  public void AI()
+  {
+    if (IsNPCAnAgent)
+    {
+      AIManager.instance.FollowTarget(target, target.position);
     }
   }
 

@@ -3767,16 +3767,10 @@ MonoBehaviour:
   tasks:
   - Mission:
     - ID: 0
-      task: LEVEL ? - WHERE I AM?
+      task: LEVEL 5 - RUN FOR YOUR LIFE
       IsCompleted: 0
-    MainTask:
-    - ID: 0
-      task: Find a way out
-      IsCompleted: 0
-    SecundaryTask:
-    - ID: 0
-      task: Get somethink to drink
-      IsCompleted: 0
+    MainTask: []
+    SecundaryTask: []
   TasksObjs: []
 --- !u!114 &1403081978
 MonoBehaviour:

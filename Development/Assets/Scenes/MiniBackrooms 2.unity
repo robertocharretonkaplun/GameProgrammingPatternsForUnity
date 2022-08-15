@@ -5546,6 +5546,10 @@ MonoBehaviour:
     minPosition: {x: 0, y: 0}
     maxPosition: {x: 5, y: 5}
     obligatory: 0
+  - room: {fileID: 5710794644438121482, guid: 54f27fd674c87da44a94f0fb07ad891e, type: 3}
+    minPosition: {x: 4, y: 4}
+    maxPosition: {x: 4, y: 4}
+    obligatory: 1
   offset: {x: 60, y: 60}
   WayPoints: {fileID: 2034445944}
   RoomObjs: []

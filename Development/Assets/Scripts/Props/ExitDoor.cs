@@ -11,6 +11,7 @@ public class ExitDoor : MonoBehaviour
   public bool DoorHasPassword;
   public int Password = 0;
   public int PasswordInput = 0;
+  public int LevelIndex = 0;
   // Start is called before the first frame update
   void Start()
   {
@@ -41,7 +42,7 @@ public class ExitDoor : MonoBehaviour
     {
       if (Input.GetKeyDown(KeyCode.E))
       {
-        SceneManagment.instance.LoadLevel_0(); // Must be Random scene
+        SceneManagment.instance.LoadLevelCustom(LevelIndex); // Must be Random scene
       }
     }
   }
